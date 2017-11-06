@@ -5,4 +5,4 @@ Move over Super Smash Bros
 Fellas the game has arrived
 
 
-![FELLA](final boss.png?raw=true "fellas...")
+![Alt text](final boss.png?raw=true "fellas...")
