@@ -16,9 +16,9 @@ class Character(pygame.sprite.Sprite):
         self.rect.x = 30
         self.rect.y = 30
         
-    def move(self):
-        if self.rect.x < 500:
-            self.rect.x += 5
+    def move(self, deltaX, deltaY):
+        self.rect.x += deltaX
+        self.rect.y += deltaY
             
         
         

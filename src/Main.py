@@ -30,12 +30,17 @@ while running:
             running = False # set the exit flag
 
 
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        testCharacter.move(-3,0)
+    if keys[pygame.K_RIGHT]:
+        testCharacter.move(3,0)
+
             
     screen.fill(PERFECT_COLOR)
 
     sprites.draw(screen)
 
-    testCharacter.move()
     
     pygame.display.flip() # flip the buffers
     clock.tick(60)
