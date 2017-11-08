@@ -1,9 +1,8 @@
 import pygame
 
 class StateHandler:
-    def __init__(self, state):
-        self.state = state
-
+    #TODO: add a list of states like world, titlescreen etc so that when the class
+    # is pass by reference, it can just be called easily
     def changeState(self, newState):
         self.state = newState
 

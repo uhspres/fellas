@@ -4,7 +4,8 @@ from Player import Player
 from Enemy import Enemy
 
 class Battle(GameState):
-    def __init__(self):
+    def __init__(self, stateHandler):
+        self.stateHandler = stateHandler
         self.PERFECT_COLOR = (255,0,128)
         self.screen = pygame.display.set_mode((800,600))
         # sprite list
@@ -28,6 +29,8 @@ class Battle(GameState):
             # attack
             if keys[pygame.K_j]:
                 self.testCharacter.punch()
+                # test code just to test statehandler
+                self.stateHandler.changeState(Battle(self.stateHandler))
         
             # update sprites
             self.testCharacter.update()

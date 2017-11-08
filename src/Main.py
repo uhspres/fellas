@@ -22,8 +22,11 @@ pygame.display.set_caption("Fellas... the game")
 # variables for the game loop
 running = True
 clock = pygame.time.Clock()
-firstState = TitleScreen()
-stateHandler = StateHandler(firstState)
+
+stateHandler = StateHandler()
+firstState = TitleScreen(stateHandler)
+
+stateHandler.changeState(firstState)
 
 while running:
 
@@ -33,7 +36,7 @@ while running:
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_v]:
-        newState = Battle()
+        newState = Battle(stateHandler)
         stateHandler.changeState(newState)
     stateHandler.update()
     
