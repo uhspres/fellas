@@ -1,11 +1,24 @@
 import pygame
 from Character import Character
 
-class Player(Character):
-    def __init__(self, image):
-        super().__init__(140, 225, image)
+class Enemy(Character):
+    def __init__(self, image, w, h, target):
+        super().__init__(w,h,image)
+        self.height = h
+        self.target = target
 
     def update(self):
+        # move towards the player
+        if self.target.rect.x  > self.rect.x:
+            self.move(1, 0)
+        elif self.target.rect.x < self.rect.y:
+            self.move(-1, 0)
+        
+        # random jumping code, just jump constantly
+        if not self.jumping:
+            self.jump()
+        
+        # jumping code
         if self.jumping:
 
             # calculate force for jump
@@ -18,10 +31,8 @@ class Player(Character):
             self.velocity -= 1 # reduce the velocity so that you fall eventually
 
             # reset physics
-            if self.rect.y > 350: # check if player is on the ground
+            if self.rect.y > 500 - (self.height / 2): # check if player is on the ground
                 self.rect.y = 350
                 self.jumping = False
                 self.velocity = 8
         
-    def punch(self):
-        print("Punch!")
