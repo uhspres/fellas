@@ -35,8 +35,10 @@ while running:
         testCharacter.move(-3,0)
     if keys[pygame.K_RIGHT]:
         testCharacter.move(3,0)
+    if keys[pygame.K_SPACE]:
+        testCharacter.jump()
 
-            
+    testCharacter.update()
     screen.fill(PERFECT_COLOR)
 
     sprites.draw(screen)
