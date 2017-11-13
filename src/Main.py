@@ -24,10 +24,14 @@ pygame.display.set_caption("Fellas... the game")
 running = True
 clock = pygame.time.Clock()
 
+# main state handler
 stateHandler = StateHandler()
-firstState = TitleScreen(stateHandler)
 
-stateHandler.changeState(firstState)
+# initial states
+firstState = TitleScreen(stateHandler)
+battleState = Battle(stateHandler)
+
+stateHandler.configStates(firstState, battleState) # configure the statehandler
 
 while running:
 

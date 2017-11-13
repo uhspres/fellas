@@ -23,8 +23,7 @@ class TitleScreen(GameState):
         if mosx > 260 and mosx < 500 and mosy > 190 and mosy < 266:
             self.screen.blit(playButtonHover, (x, 100))
             if pygame.mouse.get_pressed() == (1, 0, 0):
-                print("haha")
-                exit()
+                self.stateHandler.goToBattle()
         if mosx > 260 and mosx < 500 and mosy > 290 and mosy < 366:
             self.screen.blit(exitButtonHover, (x, 200))
             if pygame.mouse.get_pressed() == (1, 0, 0):
