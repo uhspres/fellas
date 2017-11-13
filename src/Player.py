@@ -15,13 +15,14 @@ class Player(Character):
                 self.force = -(0.5 * self.mass * pow(self.velocity, 2)) # negative force for going down
 
             self.rect.y -= self.force # add force to the y position
-            self.velocity -= 1 # reduce the velocity so that you fall eventually
+            parab = abs(12.9/(self.rect.y + .001))
 
+            self.velocity -= parab * parab + parab + .01; # reduce the velocity so that you fall eventually
             # reset physics
             if self.rect.y > 350: # check if player is on the ground
                 self.rect.y = 350
                 self.jumping = False
-                self.velocity = 8
+                self.velocity = 6.5
         
     def punch(self):
         print("Punch!")
