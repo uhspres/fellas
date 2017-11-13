@@ -3,6 +3,7 @@ import pygame
 from Player import Player
 from Enemy import Enemy
 
+# game state imports
 from StateHandler import StateHandler
 from TitleScreen import TitleScreen
 from Battle import Battle
