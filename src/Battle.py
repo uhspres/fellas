@@ -14,11 +14,14 @@ class Battle(GameState):
         # testing stuff
         self.testCharacter = Player("ryan.png")
         self.testEnemy = Enemy("mm_phil.png", 100, 100, self.testCharacter)
+        self.background = pygame.image.load("../res/img/world.png")
+        self.background = pygame.transform.scale(self.background, (800, 600))
         self.sprites.add(self.testCharacter)
         self.sprites.add(self.testEnemy)
     
     def update(self):
             keys = pygame.key.get_pressed()
+
             if keys[pygame.K_a]:
                 self.testCharacter.move(-3,0)
             elif keys[pygame.K_d]:
@@ -36,8 +39,9 @@ class Battle(GameState):
             self.testCharacter.update()
             self.testEnemy.update()
             
-            self.screen.fill(self.PERFECT_COLOR)
 
+            #self.screen.fill(self.PERFECT_COLOR)
+            self.screen.blit(self.background, (0,0))
             self.sprites.draw(self.screen)
     
     
