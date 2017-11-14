@@ -26,4 +26,5 @@ class Player(Character):
                 self.velocity = 8
         
     def punch(self):
+        #self.image = pygame.image.load("/path/to/image_file.png")
         print("Punch!")

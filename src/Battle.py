@@ -2,6 +2,7 @@ import pygame
 from GameState import GameState
 from Player import Player
 from Enemy import Enemy
+import time
 
 class Battle(GameState):
     def __init__(self, stateHandler):
@@ -34,6 +35,16 @@ class Battle(GameState):
                 self.testCharacter.punch()
                 # test code just to test statehandler
                 self.stateHandler.changeState(Battle(self.stateHandler))
+            if keys[pygame.K_x]:
+                self.testCharacter.kill()
+                self.testCharacter = Player("ryankick.png")
+                self.sprites.add(self.testCharacter)
+                self.testCharacter.update()
+            if keys[pygame.K_y]:   
+                self.testCharacter.kill()
+                self.testCharacter = Player("ryan.png")
+                self.sprites.add(self.testCharacter)
+                self.testCharacter.update()
         
             # update sprites
             self.testCharacter.update()
