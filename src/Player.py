@@ -1,12 +1,24 @@
 import pygame
+import time
 from Character import Character
 
 class Player(Character):
     def __init__(self, image):
         super().__init__(140, 225, image)
         parab = 0;
-
+        self.frames = [self.image,
+                       pygame.transform.scale(
+                           pygame.image.load("../res/img/ryankick.png"), (140,225))]
+        self.animating = False
+        self.startTime = 0
+        self.animationDuration = 0
     def update(self):
+        if self.animating:
+            if self.startTime + self.animationDuration < round(time.time()):
+                self.animating = False
+                self.image = self.frames[0]
+
+
         if self.jumping:
 
             # calculate force for jump
@@ -24,7 +36,19 @@ class Player(Character):
                 self.rect.y = 350
                 self.jumping = False
                 self.velocity = 8
+
+
+
+    
+    def animate(self, animationIndex, duration):
+        if self.animating == False:
+            self.animating = True
+            self.startTime = round(time.time())
+            self.animationDuration = duration/1000
+            self.image = self.frames[animationIndex]
+
         
     def punch(self):
         #self.image = pygame.image.load("/path/to/image_file.png")
         print("Punch!")
+        self.animate(1, 1)
