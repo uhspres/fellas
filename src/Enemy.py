@@ -37,7 +37,7 @@ class Enemy(Character):
 
             # reset physics
             if self.rect.y > 500 - (self.height / 2): # check if player is on the ground
-                self.rect.y = 350
+                self.rect.y = 450
                 self.jumping = False
                 self.velocity = 8
         

@@ -8,7 +8,9 @@ class Player(Character):
         parab = 0;
         self.frames = [self.image,
                        pygame.transform.scale(
-                           pygame.image.load("../res/img/ryankick.png"), (140,225))]
+                           pygame.image.load("../res/img/ryankick.png"), (140,225)),
+                                pygame.transform.scale(
+                                    pygame.image.load("../res/img/ryanpunch.png"), (140,225))]
         self.animating = False
         self.startTime = 0
         self.animationDuration = 0
@@ -50,7 +52,11 @@ class Player(Character):
             self.image = self.frames[animationIndex]
             self.cooldown = 2
 
-        
+    
     def punch(self):
         self.animate(1, 1)
+        self.soundPlayer.play("woosh.ogg")
+
+    def kick(self):
+        self.animate(2, 1)
         self.soundPlayer.play("woosh.ogg")
