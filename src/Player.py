@@ -12,12 +12,14 @@ class Player(Character):
         self.animating = False
         self.startTime = 0
         self.animationDuration = 0
+        self.cooldown = 0
     def update(self):
         if self.animating:
-            if self.startTime + self.animationDuration < round(time.time()):
+            if self.startTime + self.animationDuration < time.time():
                 self.animating = False
                 self.image = self.frames[0]
-
+        elif self.cooldown > 0:
+            self.cooldown -= 1
 
         if self.jumping:
 
@@ -41,14 +43,13 @@ class Player(Character):
 
     
     def animate(self, animationIndex, duration):
-        if self.animating == False:
+        if self.animating == False and self.cooldown == 0:
             self.animating = True
             self.startTime = round(time.time())
-            self.animationDuration = duration/1000
+            self.animationDuration = duration/500
             self.image = self.frames[animationIndex]
+            self.cooldown = 2
 
         
     def punch(self):
-        #self.image = pygame.image.load("/path/to/image_file.png")
-        print("Punch!")
         self.animate(1, 1)
