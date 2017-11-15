@@ -52,7 +52,10 @@ class Battle(GameState):
             # update sprites
             self.testCharacter.update()
             self.testEnemy.update()
-            
+            if self.testCharacter.health < 0:
+                print("lose")
+            elif self.testEnemy.health < 0:
+                print("Win")
 
             #self.screen.fill(self.PERFECT_COLOR)
             self.screen.blit(self.background, (0,0))
@@ -61,12 +64,14 @@ class Battle(GameState):
             self.drawHealthBars()
             pygame.display.flip() # flip the buffers
 
+
     def hitbox(self):
         enemyHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testEnemy.rect.x + 20, self.testEnemy.rect.y, 60, 100), 2)
-        if self.cIndex == 1:
+        if self.testCharacter.animating:
             kickHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x + 20, self.testCharacter.rect.y + 120, 30, 30), 2)
             if(kickHit.colliderect(enemyHit)):
                 self.testCharacter.soundPlayer.play("hit.ogg")
+                self.testEnemy.health -= 5
         else:
             normalHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x + 20, self.testCharacter.rect.y, 110, 225), 2)
 
