@@ -53,3 +53,4 @@ class Player(Character):
         
     def punch(self):
         self.animate(1, 1)
+        self.soundPlayer.play("woosh.ogg")

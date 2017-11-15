@@ -1,10 +1,12 @@
 import pygame
+from SoundPlayer import SoundPlayer
 
 # Character class inherits from the pygame sprite class
 class Character(pygame.sprite.Sprite):
     def __init__(self, width, height, image):
         super().__init__() # call the super constructor
 
+        self.soundPlayer = SoundPlayer()
         # -- sprite configuration -- 
         # configure the image
         self.image = pygame.image.load("../res/img/" + image)
