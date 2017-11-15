@@ -38,7 +38,8 @@ class Battle(GameState):
             # attack
             if keys[pygame.K_j]:
                 self.testCharacter.punch()
-                # test code just to test statehandler
+            if keys[pygame.K_k]:
+                self.testCharacter.kick()
             if keys[pygame.K_x]:
                 self.cIndex = 1
                 self.testCharacter.kill()
