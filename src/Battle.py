@@ -66,7 +66,7 @@ class Battle(GameState):
         if self.cIndex == 1:
             kickHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x + 20, self.testCharacter.rect.y + 120, 30, 30), 2)
             if(kickHit.colliderect(enemyHit)):
-                print("hit")
+                self.testCharacter.soundPlayer.play("hit.ogg")
         else:
             normalHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x + 20, self.testCharacter.rect.y, 110, 225), 2)
 
