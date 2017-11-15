@@ -2,6 +2,7 @@ import pygame
 from GameState import GameState
 from Player import Player
 from Enemy import Enemy
+from SoundPlayer import SoundPlayer
 import time
 
 class Battle(GameState):
@@ -21,6 +22,8 @@ class Battle(GameState):
         self.sprites.add(self.testCharacter)
         self.sprites.add(self.testEnemy)
 
+        self.soundPlayer = SoundPlayer()
+        self.soundPlayer.play("mountain_king.ogg")
         self.font = pygame.font.SysFont("monospace", 25)
     def update(self):
             keys = pygame.key.get_pressed()
