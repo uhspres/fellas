@@ -35,7 +35,7 @@ battleState = Battle(stateHandler)
 deathState = DeathScreen(stateHandler)
 winState = WinScreen(stateHandler)
 soundPlayer = SoundPlayer()
-soundPlayer.play("mountain_king.ogg")
+soundPlayer.play("dope.ogg")
 
 stateHandler.configStates(firstState, battleState, deathState, winState) # configure the statehandler
 
