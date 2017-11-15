@@ -63,7 +63,7 @@ class Battle(GameState):
                 print("lose")
             elif self.testEnemy.health < 0:
                 print("Win")
-                 self.stateHandler.goToWinScreen()
+                self.stateHandler.goToWinScreen()
                 
                 pygame.display.flip()
 

@@ -9,7 +9,7 @@ class StateHandler:
         self.battle = battleScreen
         self.death = deathScreen
         self.win = winScreen
-        self.state = self.win
+        self.state = self.title
 
     def changeState(self, newState): # base function
         self.state = newState
