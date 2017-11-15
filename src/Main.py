@@ -6,6 +6,7 @@ from Enemy import Enemy
 # game state imports
 from StateHandler import StateHandler
 from TitleScreen import TitleScreen
+from DeathScreen import DeathScreen
 from Battle import Battle
 
 pygame.init() # initialize pygame
@@ -27,8 +28,10 @@ stateHandler = StateHandler()
 # initial states
 firstState = TitleScreen(stateHandler)
 battleState = Battle(stateHandler)
+deathState = DeathScreen(stateHandler)
 
-stateHandler.configStates(firstState, battleState) # configure the statehandler
+
+stateHandler.configStates(firstState, battleState, deathState) # configure the statehandler
 
 while running:
 
@@ -37,9 +40,7 @@ while running:
             running = False # set the exit flag
 
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_v]:
-        newState = Battle(stateHandler)
-        stateHandler.changeState(newState)
+
     stateHandler.update()
     
 

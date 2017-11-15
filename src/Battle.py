@@ -56,6 +56,9 @@ class Battle(GameState):
             self.testCharacter.update()
             self.testEnemy.update()
             if self.testCharacter.health < 0:
+                self.stateHandler.goToDeathScreen()
+                
+                pygame.display.flip()
                 print("lose")
             elif self.testEnemy.health < 0:
                 print("Win")
