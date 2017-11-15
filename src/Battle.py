@@ -26,9 +26,9 @@ class Battle(GameState):
             keys = pygame.key.get_pressed()
 
             if keys[pygame.K_a]:
-                self.testCharacter.move(-3,0)
+                self.testCharacter.move(-5,0)
             elif keys[pygame.K_d]:
-                self.testCharacter.move(3,0)
+                self.testCharacter.move(5,0)
             if keys[pygame.K_SPACE]:
                 self.testCharacter.jump()
 
@@ -72,8 +72,12 @@ class Battle(GameState):
             if(kickHit.colliderect(enemyHit)):
                 self.testCharacter.soundPlayer.play("hit.ogg")
                 self.testEnemy.health -= 5
+                self.testEnemy.rect.x -= 200
         else:
             normalHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x + 20, self.testCharacter.rect.y, 110, 225), 2)
+            if(normalHit.colliderect(enemyHit)):
+                self.testCharacter.health -= 5
+                self.testCharacter.rect.x += 100
 
 
     def drawHealthBars(self):
