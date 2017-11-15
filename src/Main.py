@@ -7,6 +7,7 @@ from Enemy import Enemy
 from StateHandler import StateHandler
 from TitleScreen import TitleScreen
 from DeathScreen import DeathScreen
+from WinScreen import WinScreen
 from Battle import Battle
 
 pygame.init() # initialize pygame
@@ -29,9 +30,10 @@ stateHandler = StateHandler()
 firstState = TitleScreen(stateHandler)
 battleState = Battle(stateHandler)
 deathState = DeathScreen(stateHandler)
+winState = WinScreen(stateHandler)
 
 
-stateHandler.configStates(firstState, battleState, deathState) # configure the statehandler
+stateHandler.configStates(firstState, battleState, deathState, winState) # configure the statehandler
 
 while running:
 

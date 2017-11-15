@@ -4,11 +4,12 @@ from Battle import Battle
 class StateHandler:
     #TODO: add a list of states like world, titlescreen etc so that when the class
     # is pass by reference, it can just be called easily
-    def configStates(self, titleScreen, battleScreen, deathScreen):
+    def configStates(self, titleScreen, battleScreen, deathScreen, winScreen):
         self.title = titleScreen
         self.battle = battleScreen
         self.death = deathScreen
-        self.state = self.title
+        self.win = winScreen
+        self.state = self.win
 
     def changeState(self, newState): # base function
         self.state = newState
@@ -24,6 +25,9 @@ class StateHandler:
 
     def goToDeathScreen(self):
         self.changeState(self.death)
+
+    def goToWinScreen(self):
+        self.changeState(self.win)
 
     def newGame(self):
         self.battle = Battle(self)
