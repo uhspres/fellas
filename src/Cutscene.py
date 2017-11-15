@@ -6,7 +6,9 @@ from Enemy import Enemy
 '''
 Cutscenes are formated as COMMAND [character] [args (optional)]
 Ex: MOVE 1 4 5
-would move characters[1] by the vector movement (4,5)
+would move characters[1] by the movement vector (4,5)
+
+[MOVE,1,4,JUMP,1,3,MOVE,2,3,JUMP,1,1]
 '''
 
 class Cutscene(GameState):
@@ -33,7 +35,6 @@ class Cutscene(GameState):
                 # move characters
                 this.characters[this.scene[index+1]].move(this.scene[index+2])
             elif event == "JUMP": # MOVE <character> <# of times>
-                # TODO: jump
                 for x in range(0,this.scene[index+2]):
                     this.characters[this.scene[index+1]].jump()
             else: # this is arguments

@@ -13,13 +13,15 @@ class Battle(GameState):
         self.sprites = pygame.sprite.Group()
         self.test = ["ryan.png", "ryankick.png"]
         self.cIndex = 0
-        # testing stuff
+
         self.testCharacter = Player(self.test[self.cIndex])
         self.testEnemy = Enemy("mm_phil.png", 100, 100, self.testCharacter)
         self.background = pygame.image.load("../res/img/world.png")
         self.background = pygame.transform.scale(self.background, (800, 600))
         self.sprites.add(self.testCharacter)
         self.sprites.add(self.testEnemy)
+
+        self.font = pygame.font.SysFont("monospace", 25)
     def update(self):
             keys = pygame.key.get_pressed()
 
@@ -56,6 +58,7 @@ class Battle(GameState):
             self.screen.blit(self.background, (0,0))
             self.sprites.draw(self.screen)
             self.hitbox()
+            self.drawHealthBars()
             pygame.display.flip() # flip the buffers
 
     def hitbox(self):
@@ -68,7 +71,11 @@ class Battle(GameState):
             normalHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x + 20, self.testCharacter.rect.y, 110, 225), 2)
 
 
+    def drawHealthBars(self):
+        # player health
+        pygame.draw.rect(self.screen, (0,255,0), (75,30,self.testCharacter.health*2,40))
+        # enemy health
+        pygame.draw.rect(self.screen, (0,255,0), (530,30,self.testEnemy.health*2,40))
 
-
-
-
+        self.screen.blit(self.font.render("Player", 1, (0,0,128)), (40,3))
+        self.screen.blit(self.font.render("Enemy", 1, (0,0,128)), (685,3))

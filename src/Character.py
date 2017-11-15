@@ -21,7 +21,7 @@ class Character(pygame.sprite.Sprite):
         self.jumping = False # jump when true
         self.velocity = 5 # character's velocity
         self.mass = 1 # character's mass
-    
+        self.health = 100
         
     def move(self, deltaX, deltaY): # move character
         self.rect.x += deltaX
@@ -30,7 +30,6 @@ class Character(pygame.sprite.Sprite):
     def jump(self): # set jumping flag
         self.jumping = True
         # actual jumping stuff is implemented by the sublclasses
-
             
         
         

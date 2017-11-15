@@ -6,6 +6,8 @@ class Enemy(Character):
         super().__init__(w,h,image)
         self.height = h
         self.target = target
+        self.jumpCooldown = 0
+        self.jumpRate = 30
 
     def update(self):
         # move towards the player
@@ -15,8 +17,11 @@ class Enemy(Character):
             self.move(-1, 0)
         
         # random jumping code, just jump constantly
-        if not self.jumping:
+        if not self.jumping and self.jumpCooldown < 0:
             self.jump()
+            self.jumpCooldown = self.jumpRate
+        else:
+            self.jumpCooldown -= 1
         
         # jumping code
         if self.jumping:
