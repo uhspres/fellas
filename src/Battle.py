@@ -22,8 +22,6 @@ class Battle(GameState):
         self.sprites.add(self.testCharacter)
         self.sprites.add(self.testEnemy)
 
-        self.soundPlayer = SoundPlayer()
-        self.soundPlayer.play("mountain_king.ogg")
         self.font = pygame.font.SysFont("monospace", 25)
     def update(self):
             keys = pygame.key.get_pressed()
@@ -40,18 +38,8 @@ class Battle(GameState):
                 self.testCharacter.punch()
             if keys[pygame.K_k]:
                 self.testCharacter.kick()
-            if keys[pygame.K_x]:
-                self.cIndex = 1
-                self.testCharacter.kill()
-                self.testCharacter = Player(self.test[self.cIndex])
-                self.sprites.add(self.testCharacter)
-                self.testCharacter.update()
-            if keys[pygame.K_y]:   
-                self.cIndex = 0
-                self.testCharacter.kill()
-                self.testCharacter = Player(self.test[self.cIndex])
-                self.sprites.add(self.testCharacter)
-                self.testCharacter.update()
+            if keys[pygame.K_y]:  # DEBUG KILL ENEMY
+                self.testEnemy.health -= 10
         
             # update sprites
             self.testCharacter.update()
@@ -72,6 +60,7 @@ class Battle(GameState):
             self.sprites.draw(self.screen)
             self.hitbox()
             self.drawHealthBars()
+            self.drawStage()
             pygame.display.flip() # flip the buffers
 
 
@@ -98,3 +87,6 @@ class Battle(GameState):
 
         self.screen.blit(self.font.render("Player", 1, (0,0,128)), (40,3))
         self.screen.blit(self.font.render("Enemy", 1, (0,0,128)), (685,3))
+
+    def drawStage(self):
+        self.screen.blit(self.font.render("Stage " + str(self.stateHandler.stage), 1, (0,0,128)), (250, 30))

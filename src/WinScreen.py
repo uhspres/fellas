@@ -23,5 +23,11 @@ class WinScreen(GameState):
                 self.stateHandler.newGame()
                 self.stateHandler.goToBattle()
                 self.stateHandler.update()
-                
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_RETURN]:
+            self.stateHandler.newGame()
+            self.stateHandler.goToBattle()
+            self.stateHandler.update()
+            
         pygame.display.flip()

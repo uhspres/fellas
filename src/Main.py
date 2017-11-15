@@ -10,6 +10,9 @@ from DeathScreen import DeathScreen
 from WinScreen import WinScreen
 from Battle import Battle
 
+#sound
+from SoundPlayer import SoundPlayer
+
 pygame.init() # initialize pygame
 
 
@@ -31,7 +34,8 @@ firstState = TitleScreen(stateHandler)
 battleState = Battle(stateHandler)
 deathState = DeathScreen(stateHandler)
 winState = WinScreen(stateHandler)
-
+soundPlayer = SoundPlayer()
+soundPlayer.play("mountain_king.ogg")
 
 stateHandler.configStates(firstState, battleState, deathState, winState) # configure the statehandler
 
