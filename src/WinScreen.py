@@ -8,7 +8,7 @@ class WinScreen(GameState):
         self.screen = pygame.display.set_mode((800,600))
     def update(self):
         
-        x = 250;
+        x = 250
 
         playagainButton = pygame.image.load("../res/img/playagain.png")
         playagainButtonHover = pygame.image.load("../res/img/playagainhover.png")

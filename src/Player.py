@@ -15,14 +15,23 @@ class Player(Character):
         self.startTime = 0
         self.animationDuration = 0
         self.cooldown = 0
+        self.kicking = False
+        self.punching = False
     def update(self):
         if self.animating:
             if self.startTime + self.animationDuration < time.time():
                 self.animating = False
+                self.kicking = False
+                self.punching = False
                 self.image = self.frames[0]
+
         elif self.cooldown > 0:
             self.cooldown -= 1
 
+
+        if self.cooldown == 0:
+            self.kicking = False
+            self.punching = False
         if self.jumping:
 
             # calculate force for jump
@@ -54,9 +63,11 @@ class Player(Character):
 
     
     def punch(self):
-        self.animate(1, 1)
+        self.animate(2, 1)
+        self.punching = True
         self.soundPlayer.play("woosh.ogg")
 
     def kick(self):
-        self.animate(2, 1)
+        self.animate(1, 1)
+        self.kicking = True
         self.soundPlayer.play("woosh.ogg")

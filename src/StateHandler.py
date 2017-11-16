@@ -6,11 +6,12 @@ class StateHandler:
         self.stage = 0 # the current game stage is 0
     #TODO: add a list of states like world, titlescreen etc so that when the class
     # is pass by reference, it can just be called easily
-    def configStates(self, titleScreen, battleScreen, deathScreen, winScreen):
+    def configStates(self, titleScreen, battleScreen, deathScreen, winScreen, finalWin):
         self.title = titleScreen
         self.battle = battleScreen
         self.death = deathScreen
         self.win = winScreen
+        self.finalWin = finalWin
         self.state = self.title
 
     def changeState(self, newState): # base function
@@ -30,8 +31,11 @@ class StateHandler:
         self.changeState(self.death)
 
     def goToWinScreen(self):
-        self.changeState(self.win)
-        self.stage += 1
+        if self.stage == 99:
+            self.changeState(self.finalWin)
+        else:
+            self.changeState(self.win)
+            self.stage += 1
 
     def newGame(self):
         self.battle = Battle(self)

@@ -66,8 +66,14 @@ class Battle(GameState):
 
     def hitbox(self):
         enemyHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testEnemy.rect.x + 20, self.testEnemy.rect.y, 60, 100), 2)
-        if self.testCharacter.animating:
+        if self.testCharacter.kicking:
             kickHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x + 20, self.testCharacter.rect.y + 120, 30, 30), 2)
+            if(kickHit.colliderect(enemyHit)):
+                self.testCharacter.soundPlayer.play("hit.ogg")
+                self.testEnemy.health -= 5
+                self.testEnemy.rect.x -= 200
+        elif self.testCharacter.punching:
+            kickHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x - 20, self.testCharacter.rect.y + 50, 30, 30), 2)
             if(kickHit.colliderect(enemyHit)):
                 self.testCharacter.soundPlayer.play("hit.ogg")
                 self.testEnemy.health -= 5

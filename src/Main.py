@@ -8,6 +8,7 @@ from StateHandler import StateHandler
 from TitleScreen import TitleScreen
 from DeathScreen import DeathScreen
 from WinScreen import WinScreen
+from FinalWin import FinalWin
 from Battle import Battle
 
 #sound
@@ -34,10 +35,11 @@ firstState = TitleScreen(stateHandler)
 battleState = Battle(stateHandler)
 deathState = DeathScreen(stateHandler)
 winState = WinScreen(stateHandler)
+finalWin = FinalWin(stateHandler)
 soundPlayer = SoundPlayer()
 soundPlayer.play("dope.ogg")
 
-stateHandler.configStates(firstState, battleState, deathState, winState) # configure the statehandler
+stateHandler.configStates(firstState, battleState, deathState, winState, finalWin) # configure the statehandler
 
 while running:
 
