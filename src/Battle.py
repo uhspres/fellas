@@ -38,9 +38,6 @@ class Battle(GameState):
                 self.testCharacter.punch()
             if keys[pygame.K_k]:
                 self.testCharacter.kick()
-            if keys[pygame.K_y]:  # DEBUG KILL ENEMY
-                self.testEnemy.health -= 10
-        
             # update sprites
             self.testCharacter.update()
             self.testEnemy.update()
