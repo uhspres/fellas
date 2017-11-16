@@ -1,5 +1,6 @@
 # Fellas... the game
 import pygame
+import sys
 from Player import Player
 from Enemy import Enemy
 
@@ -10,6 +11,7 @@ from DeathScreen import DeathScreen
 from WinScreen import WinScreen
 from FinalWin import FinalWin
 from Battle import Battle
+from Cutscene import Cutscene
 
 #sound
 from SoundPlayer import SoundPlayer
@@ -37,7 +39,12 @@ deathState = DeathScreen(stateHandler)
 winState = WinScreen(stateHandler)
 finalWin = FinalWin(stateHandler)
 soundPlayer = SoundPlayer()
-soundPlayer.play("dope.ogg")
+
+if sys.argv[1] == "hmmmmm":
+    soundPlayer.play("dope.ogg")
+else:
+    soundPlayer.play("mountain_king.ogg")
+
 
 stateHandler.configStates(firstState, battleState, deathState, winState, finalWin) # configure the statehandler
 
