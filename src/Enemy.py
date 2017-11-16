@@ -12,9 +12,9 @@ class Enemy(Character):
     def update(self):
         # move towards the player
         if self.target.rect.x  > self.rect.x:
-            self.move(1, 0)
+            self.move(2, 0)
         elif self.target.rect.x < self.rect.y:
-            self.move(-1, 0)
+            self.move(-2, 0)
         
         # random jumping code, just jump constantly
         if not self.jumping and self.jumpCooldown < 0:
