@@ -53,30 +53,30 @@ class Battle(GameState):
                 pygame.display.flip()
 
             #self.screen.fill(self.PERFECT_COLOR)
+            self.hitbox()
             self.screen.blit(self.background, (0,0))
             self.sprites.draw(self.screen)
-            self.hitbox()
             self.drawHealthBars()
             self.drawStage()
             pygame.display.flip() # flip the buffers
 
 
     def hitbox(self):
-        enemyHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testEnemy.rect.x + 20, self.testEnemy.rect.y, 60, 100), 2)
+        enemyHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testEnemy.rect.x + 20, self.testEnemy.rect.y, 60, 100), 1)
         if self.testCharacter.kicking:
-            kickHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x + 20, self.testCharacter.rect.y + 120, 30, 30), 2)
+            kickHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x + 20, self.testCharacter.rect.y + 120, 30, 30), 1)
             if(kickHit.colliderect(enemyHit)):
                 self.testCharacter.soundPlayer.play("hit.ogg")
-                self.testEnemy.health -= 5
-                self.testEnemy.rect.x -= 200
+                self.testEnemy.health -= 10
+                self.testEnemy.rect.x -= 400
         elif self.testCharacter.punching:
-            kickHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x - 20, self.testCharacter.rect.y + 50, 30, 30), 2)
+            kickHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x - 20, self.testCharacter.rect.y + 50, 30, 30), 1)
             if(kickHit.colliderect(enemyHit)):
                 self.testCharacter.soundPlayer.play("hit.ogg")
                 self.testEnemy.health -= 5
                 self.testEnemy.rect.x -= 200
         else:
-            normalHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x + 20, self.testCharacter.rect.y, 110, 225), 2)
+            normalHit = pygame.draw.rect(self.screen, (155, 155, 155), (self.testCharacter.rect.x + 20, self.testCharacter.rect.y, 110, 225), 1)
             if(normalHit.colliderect(enemyHit)):
                 self.testCharacter.health -= 5
                 self.testCharacter.rect.x += 100

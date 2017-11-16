@@ -48,7 +48,7 @@ class Player(Character):
             if self.rect.y > 350: # check if player is on the ground
                 self.rect.y = 350
                 self.jumping = False
-                self.velocity = 8
+                self.velocity = 9
 
 
 
